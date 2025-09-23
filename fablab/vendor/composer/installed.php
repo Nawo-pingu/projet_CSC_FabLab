@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'ca67ce0b4b348265ed242836cc6611bafeca1059',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'c55ca7b65fca5d0122d7bcaa780f52e0caa2fc97',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'ca67ce0b4b348265ed242836cc6611bafeca1059',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'c55ca7b65fca5d0122d7bcaa780f52e0caa2fc97',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -36,6 +36,15 @@
             'install_path' => __DIR__ . '/../doctrine/collections',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'doctrine/data-fixtures' => array(
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'reference' => 'f161e20f04ba5440a09330e156b40f04dd70d47f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../doctrine/data-fixtures',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'doctrine/dbal' => array(
             'pretty_version' => '3.10.2',
@@ -63,6 +72,15 @@
             'install_path' => __DIR__ . '/../doctrine/doctrine-bundle',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'doctrine/doctrine-fixtures-bundle' => array(
+            'pretty_version' => '4.1.0',
+            'version' => '4.1.0.0',
+            'reference' => 'a06db6b81ff20a2980bf92063d80c013bb8b4b7c',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../doctrine/doctrine-fixtures-bundle',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'doctrine/doctrine-migrations-bundle' => array(
             'pretty_version' => '3.4.2',

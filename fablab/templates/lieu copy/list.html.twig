@@ -1,0 +1,28 @@
+{# ... #}
+{% block title %}Lieu list{% endblock %}
+
+{% block body %}
+    <h1>Lieux</h1>
+
+       {% dump Lieu %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                  <td>
+                  <ul>
+                  {%  for lieu in Lieu %}
+                  <li>
+                  <a href="{{ path('Lieu_show', {'id': lieu.id}) }}">
+                    {{ lieu.name }}
+                  </a>
+                  </li>
+                  {% endfor %} {# Lieu #}
+                  </ul> 
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %} {# body #} 
+{# ... #} 

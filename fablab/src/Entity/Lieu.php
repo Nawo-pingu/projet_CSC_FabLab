@@ -14,12 +14,14 @@ class Lieu
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
     /**
      * @var Collection<int, Materiel>
      */
     #[ORM\OneToMany(targetEntity: Materiel::class, mappedBy: 'lieu', orphanRemoval: true)]
     private Collection $materiels;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
     public function __construct()
     {
@@ -57,6 +59,18 @@ class Lieu
                 $materiel->setLieu(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }

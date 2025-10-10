@@ -1,0 +1,25 @@
+{# ... #}
+{% block title %}Lieu n°{{ Lieu.id }}{% endblock %}
+
+{% block body %}
+    <h1>Lieu</h1>
+
+       {% dump Lieu %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ Lieu.id }}</td>
+            </tr>
+            <tr>
+                <th>Propriété 1</th>
+                <td>{{ Lieu.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('lieu_list') }}">back to list</a>
+
+{% endblock %} {# body #} 
+{# ... #} 

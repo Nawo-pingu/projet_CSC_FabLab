@@ -15,6 +15,18 @@
                 <th>Name</th>
                 <td>{{ lieu.name }}</td>
             </tr>
+            <tr>
+                <th>Materiel</th>
+                <td>
+                <ul>
+                {%  for materiel in lieu.materiels %}
+                <li>
+                <a href="{{ path('app_materiel_show', {'id': materiel.id}) }}">{{ materiel.name }}</a>
+                </li>
+                {% endfor %} {# lieu.materiels #}
+                </ul> 
+                </td>
+            </tr>
         </tbody>
     </table>
 

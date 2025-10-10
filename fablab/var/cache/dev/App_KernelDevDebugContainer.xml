@@ -25,6 +25,7 @@
       <parameter key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</parameter>
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
+      <parameter key="BootstrapMenuBundle">Camurphy\BootstrapMenuBundle\BootstrapMenuBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -74,6 +75,10 @@
       <parameter key="DoctrineFixturesBundle" type="collection">
         <parameter key="path">/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/doctrine/doctrine-fixtures-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
+      </parameter>
+      <parameter key="BootstrapMenuBundle" type="collection">
+        <parameter key="path">/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/camurphy/bootstrap-menu-bundle</parameter>
+        <parameter key="namespace">Camurphy\BootstrapMenuBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -244,6 +249,31 @@
         <parameter key="type">exclusive</parameter>
         <parameter key="elements" type="collection">
           <parameter>event</parameter>
+        </parameter>
+      </parameter>
+    </parameter>
+    <parameter key="bootstrap_menu.version">5</parameter>
+    <parameter key="bootstrap_menu.dropdown_active_style">false</parameter>
+    <parameter key="bootstrap_menu.dropdown_item_active_style">false</parameter>
+    <parameter key="bootstrap_menu.menus" type="collection">
+      <parameter key="main" type="collection">
+        <parameter key="items" type="collection">
+          <parameter key="lieux" type="collection">
+            <parameter key="label">Lieux</parameter>
+            <parameter key="route">lieu_list</parameter>
+            <parameter key="is_divider">false</parameter>
+            <parameter key="route_parameters" type="collection"/>
+            <parameter key="roles" type="collection"/>
+            <parameter key="items" type="collection"/>
+          </parameter>
+          <parameter key="matériels" type="collection">
+            <parameter key="label">materiels</parameter>
+            <parameter key="route">materiel_list</parameter>
+            <parameter key="is_divider">false</parameter>
+            <parameter key="route_parameters" type="collection"/>
+            <parameter key="roles" type="collection"/>
+            <parameter key="items" type="collection"/>
+          </parameter>
         </parameter>
       </parameter>
     </parameter>
@@ -2350,6 +2380,7 @@
           <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/symfony/monolog-bundle/translations</argument>
           <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/symfony/maker-bundle/translations</argument>
           <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/doctrine/doctrine-fixtures-bundle/translations</argument>
+          <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/camurphy/bootstrap-menu-bundle/translations</argument>
         </argument>
         <argument key="cache_vary" type="collection">
           <argument key="scanned_directories" type="collection">
@@ -2369,6 +2400,7 @@
             <argument>vendor/symfony/monolog-bundle/translations</argument>
             <argument>vendor/symfony/maker-bundle/translations</argument>
             <argument>vendor/doctrine/doctrine-fixtures-bundle/translations</argument>
+            <argument>vendor/camurphy/bootstrap-menu-bundle/translations</argument>
           </argument>
         </argument>
       </argument>
@@ -5722,6 +5754,9 @@
         <argument type="service" id="stimulus.ux_controllers_twig_extension"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="camurphy.bootstrap_menu.twig.menu_extension"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="stimulus.twig_extension"/>
       </call>
       <call method="addGlobal">
@@ -5839,6 +5874,14 @@
       <call method="addPath">
         <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/symfony/maker-bundle/templates</argument>
         <argument>!Maker</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/camurphy/bootstrap-menu-bundle/Resources/views</argument>
+        <argument>BootstrapMenu</argument>
+      </call>
+      <call method="addPath">
+        <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/vendor/camurphy/bootstrap-menu-bundle/Resources/views</argument>
+        <argument>!BootstrapMenu</argument>
       </call>
       <call method="addPath">
         <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/templates</argument>
@@ -7034,6 +7077,13 @@
     </service>
     <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory">
       <tag name="doctrine.fixtures.purger_factory" alias="default"/>
+    </service>
+    <service id="camurphy.bootstrap_menu.twig.menu_extension" class="Camurphy\BootstrapMenuBundle\Twig\Extension\MenuExtension">
+      <tag name="twig.extension"/>
+      <argument>%bootstrap_menu.menus%</argument>
+      <argument>5</argument>
+      <argument>false</argument>
+      <argument>false</argument>
     </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LieuController" class="App\Controller\LieuController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LieuController" class="App\Controller\LieuController" autowire="true" abstract="true"/>
@@ -8326,7 +8376,7 @@
       <argument>/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/assets/vendor</argument>
     </service>
     <service id="asset_mapper.asset_package.inner" class="Symfony\Component\Asset\PathPackage">
-      <argument></argument>
+      <argument>/startbootstrap-shop-homepage-gh-pages</argument>
       <argument type="service" id="assets.empty_version_strategy"/>
       <argument type="service" id="assets.context"/>
     </service>

@@ -128,8 +128,13 @@ class __TwigTemplate_2353db502c5e95f578ac323c6a66e103 extends Template
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiel_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["materiel"]) || array_key_exists("materiel", $context) ? $context["materiel"] : (function () { throw new RuntimeError('Variable "materiel" does not exist.', 23, $this->source); })()), "id", [], "any", false, false, false, 23)]), "html", null, true);
         yield "\">edit</a>
 
-    ";
+    <a href=\"";
         // line 25
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["materiel"]) || array_key_exists("materiel", $context) ? $context["materiel"] : (function () { throw new RuntimeError('Variable "materiel" does not exist.', 25, $this->source); })()), "lieu", [], "any", false, false, false, 25), "id", [], "any", false, false, false, 25)]), "html", null, true);
+        yield "\">back to Lieu</a>
+
+    ";
+        // line 27
         yield Twig\Extension\CoreExtension::include($this->env, $context, "materiel/_delete_form.html.twig");
         yield "
 ";
@@ -163,7 +168,7 @@ class __TwigTemplate_2353db502c5e95f578ac323c6a66e103 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  133 => 25,  128 => 23,  123 => 21,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  138 => 27,  133 => 25,  128 => 23,  123 => 21,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -191,6 +196,8 @@ class __TwigTemplate_2353db502c5e95f578ac323c6a66e103 extends Template
     <a href=\"{{ path('app_materiel_index') }}\">back to list</a>
 
     <a href=\"{{ path('app_materiel_edit', {'id': materiel.id}) }}\">edit</a>
+
+    <a href=\"{{ path('app_lieu_show', {'id': materiel.lieu.id}) }}\">back to Lieu</a>
 
     {{ include('materiel/_delete_form.html.twig') }}
 {% endblock %}

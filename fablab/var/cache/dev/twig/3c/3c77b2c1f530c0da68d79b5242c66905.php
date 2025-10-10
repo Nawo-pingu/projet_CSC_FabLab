@@ -35,7 +35,6 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
             'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
             'javascripts' => [$this, 'block_javascripts'],
-            'importmap' => [$this, 'block_importmap'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -62,18 +61,18 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
         ";
         // line 7
         yield from $this->unwrap()->yieldBlock('stylesheets', $context, $blocks);
-        // line 9
+        // line 13
         yield "
         ";
-        // line 10
+        // line 14
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 13
+        // line 20
         yield "    </head>
     <body>
         ";
-        // line 15
+        // line 22
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 16
+        // line 23
         yield "    </body>
 </html>
 ";
@@ -123,7 +122,14 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
         // line 8
-        yield "        ";
+        yield "                <!-- Bootstrap icons-->
+                <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\" rel=\"stylesheet\" />
+                <!-- Core theme CSS (includes Bootstrap)-->
+                <link href=\"";
+        // line 11
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/styles.css"), "html", null, true);
+        yield "\" rel=\"stylesheet\">
+        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -133,7 +139,7 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
         yield from [];
     }
 
-    // line 10
+    // line 14
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -146,11 +152,15 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 11
-        yield "            ";
-        yield from $this->unwrap()->yieldBlock('importmap', $context, $blocks);
-        // line 12
-        yield "        ";
+        // line 15
+        yield "            <!-- Bootstrap core JS-->
+            <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js\"></script>
+            <!-- Core theme JS-->
+            <script src=\"";
+        // line 18
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/scripts.js"), "html", null, true);
+        yield "\"></script>
+        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -160,30 +170,7 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
         yield from [];
     }
 
-    // line 11
-    /**
-     * @return iterable<null|scalar|\Stringable>
-     */
-    public function block_importmap(array $context, array $blocks = []): iterable
-    {
-        $macros = $this->macros;
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "importmap"));
-
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "importmap"));
-
-        yield $this->env->getRuntime('Symfony\Bridge\Twig\Extension\ImportMapRuntime')->importmap("app");
-        
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
-
-        
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
-
-        yield from [];
-    }
-
-    // line 15
+    // line 22
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -218,7 +205,7 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  187 => 15,  164 => 11,  153 => 12,  150 => 11,  137 => 10,  126 => 8,  113 => 7,  90 => 5,  77 => 16,  75 => 15,  71 => 13,  69 => 10,  66 => 9,  64 => 7,  59 => 5,  53 => 1,);
+        return array (  174 => 22,  161 => 18,  156 => 15,  143 => 14,  130 => 11,  125 => 8,  112 => 7,  89 => 5,  76 => 23,  74 => 22,  70 => 20,  68 => 14,  65 => 13,  63 => 7,  58 => 5,  52 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -230,16 +217,23 @@ class __TwigTemplate_88251708c8eddbefe87e1fb6598889a1 extends Template
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">
         {% block stylesheets %}
+                <!-- Bootstrap icons-->
+                <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css\" rel=\"stylesheet\" />
+                <!-- Core theme CSS (includes Bootstrap)-->
+                <link href=\"{{ asset('css/styles.css') }}\" rel=\"stylesheet\">
         {% endblock %}
 
         {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
+            <!-- Bootstrap core JS-->
+            <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js\"></script>
+            <!-- Core theme JS-->
+            <script src=\"{{ asset('js/scripts.js') }}\"></script>
         {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "/home/kiwano/Documents/TSP/CSC4101/projet/fablab/templates/base.html.twig");
+", "base.html.twig", "/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/templates/base.html.twig");
     }
 }

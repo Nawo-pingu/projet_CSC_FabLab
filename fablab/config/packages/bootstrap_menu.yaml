@@ -1,0 +1,10 @@
+bootstrap_menu:
+  menus:
+    main:
+      items:
+        lieux:
+          label: 'Lieux'
+          route: 'lieu_list'
+        matériels:
+          label: 'materiels'
+          route: 'materiel_list' 

@@ -29,12 +29,16 @@ class __TwigTemplate_84e4ddebc58c6e73882e62f5e8e65616 extends Template
 
         $this->source = $this->getSourceContext();
 
-        $this->parent = false;
-
         $this->blocks = [
             'title' => [$this, 'block_title'],
             'body' => [$this, 'block_body'],
         ];
+    }
+
+    protected function doGetParent(array $context): bool|string|Template|TemplateWrapper
+    {
+        // line 1
+        return "base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = []): iterable
@@ -46,30 +50,17 @@ class __TwigTemplate_84e4ddebc58c6e73882e62f5e8e65616 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "lieu/show.html.twig"));
 
-        // line 2
-        yield from $this->unwrap()->yieldBlock('title', $context, $blocks);
-        // line 3
-        yield "
-";
-        // line 4
-        yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 24
-        yield " ";
-        yield " 
-";
-        // line 25
-        yield " 
-";
+        $this->parent = $this->load("base.html.twig", 1);
+        yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        yield from [];
     }
 
-    // line 2
+    // line 3
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -82,8 +73,7 @@ class __TwigTemplate_84e4ddebc58c6e73882e62f5e8e65616 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        yield "Lieu n°";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["Lieu"]) || array_key_exists("Lieu", $context) ? $context["Lieu"] : (function () { throw new RuntimeError('Variable "Lieu" does not exist.', 2, $this->source); })()), "id", [], "any", false, false, false, 2), "html", null, true);
+        yield "Lieu";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -93,7 +83,7 @@ class __TwigTemplate_84e4ddebc58c6e73882e62f5e8e65616 extends Template
         yield from [];
     }
 
-    // line 4
+    // line 5
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -106,40 +96,71 @@ class __TwigTemplate_84e4ddebc58c6e73882e62f5e8e65616 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 5
+        // line 6
         yield "    <h1>Lieu</h1>
 
-       ";
-        if ($this->env->isDebug()) {
-            // line 7
-            \Symfony\Component\VarDumper\VarDumper::dump((isset($context["Lieu"]) || array_key_exists("Lieu", $context) ? $context["Lieu"] : (function () { throw new RuntimeError('Variable "Lieu" does not exist.', 7, $this->source); })()));
-        }
-        // line 8
-        yield "
     <table class=\"table\">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>";
-        // line 13
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["Lieu"]) || array_key_exists("Lieu", $context) ? $context["Lieu"] : (function () { throw new RuntimeError('Variable "Lieu" does not exist.', 13, $this->source); })()), "id", [], "any", false, false, false, 13), "html", null, true);
+        // line 12
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 12, $this->source); })()), "id", [], "any", false, false, false, 12), "html", null, true);
         yield "</td>
             </tr>
             <tr>
-                <th>Propriété 1</th>
+                <th>Name</th>
                 <td>";
-        // line 17
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["Lieu"]) || array_key_exists("Lieu", $context) ? $context["Lieu"] : (function () { throw new RuntimeError('Variable "Lieu" does not exist.', 17, $this->source); })()), "name", [], "any", false, false, false, 17), "html", null, true);
+        // line 16
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 16, $this->source); })()), "name", [], "any", false, false, false, 16), "html", null, true);
         yield "</td>
+            </tr>
+            <tr>
+                <th>Materiel</th>
+                <td>
+                <ul>
+                ";
+        // line 22
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 22, $this->source); })()), "materiels", [], "any", false, false, false, 22));
+        foreach ($context['_seq'] as $context["_key"] => $context["materiel"]) {
+            // line 23
+            yield "                <li>
+                <a href=\"";
+            // line 24
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiel_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["materiel"], "id", [], "any", false, false, false, 24)]), "html", null, true);
+            yield "\">";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["materiel"], "name", [], "any", false, false, false, 24), "html", null, true);
+            yield "</a>
+                </li>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['materiel'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 26
+        yield " ";
+        // line 27
+        yield "                </ul> 
+                </td>
             </tr>
         </tbody>
     </table>
 
     <a href=\"";
-        // line 22
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("lieu_list");
+        // line 33
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_index");
         yield "\">back to list</a>
 
+    <a href=\"";
+        // line 35
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
+        yield "\">edit</a>
+
+    ";
+        // line 37
+        yield Twig\Extension\CoreExtension::include($this->env, $context, "lieu/_delete_form.html.twig");
+        yield "
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -161,38 +182,59 @@ class __TwigTemplate_84e4ddebc58c6e73882e62f5e8e65616 extends Template
     /**
      * @codeCoverageIgnore
      */
+    public function isTraitable(): bool
+    {
+        return false;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
     public function getDebugInfo(): array
     {
-        return array (  140 => 22,  132 => 17,  125 => 13,  118 => 8,  115 => 7,  110 => 5,  97 => 4,  73 => 2,  61 => 25,  57 => 24,  55 => 4,  52 => 3,  50 => 2,);
+        return array (  162 => 37,  157 => 35,  152 => 33,  144 => 27,  142 => 26,  131 => 24,  128 => 23,  124 => 22,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
     {
-        return new Source("{# ... #}
-{% block title %}Lieu n°{{ Lieu.id }}{% endblock %}
+        return new Source("{% extends 'base.html.twig' %}
+
+{% block title %}Lieu{% endblock %}
 
 {% block body %}
     <h1>Lieu</h1>
-
-       {% dump Lieu %}
 
     <table class=\"table\">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ Lieu.id }}</td>
+                <td>{{ lieu.id }}</td>
             </tr>
             <tr>
-                <th>Propriété 1</th>
-                <td>{{ Lieu.name }}</td>
+                <th>Name</th>
+                <td>{{ lieu.name }}</td>
+            </tr>
+            <tr>
+                <th>Materiel</th>
+                <td>
+                <ul>
+                {%  for materiel in lieu.materiels %}
+                <li>
+                <a href=\"{{ path('app_materiel_show', {'id': materiel.id}) }}\">{{ materiel.name }}</a>
+                </li>
+                {% endfor %} {# lieu.materiels #}
+                </ul> 
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <a href=\"{{ path('lieu_list') }}\">back to list</a>
+    <a href=\"{{ path('app_lieu_index') }}\">back to list</a>
 
-{% endblock %} {# body #} 
-{# ... #} 
+    <a href=\"{{ path('app_lieu_edit', {'id': lieu.id}) }}\">edit</a>
+
+    {{ include('lieu/_delete_form.html.twig') }}
+{% endblock %}
 ", "lieu/show.html.twig", "/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/templates/lieu/show.html.twig");
     }
 }

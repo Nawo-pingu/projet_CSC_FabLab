@@ -35,6 +35,7 @@ class __TwigTemplate_68c2186e4e5b7782927bde134182833a extends Template
             'title' => [$this, 'block_title'],
             'stylesheets' => [$this, 'block_stylesheets'],
             'javascripts' => [$this, 'block_javascripts'],
+            'menu' => [$this, 'block_menu'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -71,8 +72,11 @@ class __TwigTemplate_68c2186e4e5b7782927bde134182833a extends Template
     <body>
         ";
         // line 22
+        yield from $this->unwrap()->yieldBlock('menu', $context, $blocks);
+        // line 36
+        yield "        ";
         yield from $this->unwrap()->yieldBlock('body', $context, $blocks);
-        // line 23
+        // line 37
         yield "    </body>
 </html>
 ";
@@ -174,6 +178,48 @@ class __TwigTemplate_68c2186e4e5b7782927bde134182833a extends Template
     /**
      * @return iterable<null|scalar|\Stringable>
      */
+    public function block_menu(array $context, array $blocks = []): iterable
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "menu"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "menu"));
+
+        // line 23
+        yield "        <!-- Navigation -->
+            <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
+                <div class=\"container px-4 px-lg-5\">
+                    <a class=\"navbar-brand\" href=\"";
+        // line 26
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_main_page");
+        yield "\">ACCUEIL</a>
+                    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon\"></span></button>
+                    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
+                        <ul class=\"navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4\">
+                            ";
+        // line 30
+        yield $this->extensions['Camurphy\BootstrapMenuBundle\Twig\Extension\MenuExtension']->renderMenu($this->env, "main");
+        yield "
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        ";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+        yield from [];
+    }
+
+    // line 36
+    /**
+     * @return iterable<null|scalar|\Stringable>
+     */
     public function block_body(array $context, array $blocks = []): iterable
     {
         $macros = $this->macros;
@@ -205,7 +251,7 @@ class __TwigTemplate_68c2186e4e5b7782927bde134182833a extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  174 => 22,  161 => 18,  156 => 15,  143 => 14,  130 => 11,  125 => 8,  112 => 7,  89 => 5,  76 => 23,  74 => 22,  70 => 20,  68 => 14,  65 => 13,  63 => 7,  58 => 5,  52 => 1,);
+        return array (  220 => 36,  203 => 30,  196 => 26,  191 => 23,  178 => 22,  165 => 18,  160 => 15,  147 => 14,  134 => 11,  129 => 8,  116 => 7,  93 => 5,  80 => 37,  77 => 36,  75 => 22,  71 => 20,  69 => 14,  66 => 13,  64 => 7,  59 => 5,  53 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -231,6 +277,20 @@ class __TwigTemplate_68c2186e4e5b7782927bde134182833a extends Template
         {% endblock %}
     </head>
     <body>
+        {% block menu %}
+        <!-- Navigation -->
+            <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">
+                <div class=\"container px-4 px-lg-5\">
+                    <a class=\"navbar-brand\" href=\"{{ path('app_main_page') }}\">ACCUEIL</a>
+                    <button class=\"navbar-toggler\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\"><span class=\"navbar-toggler-icon\"></span></button>
+                    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">
+                        <ul class=\"navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4\">
+                            {{ render_bootstrap_menu('main') }}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}{# menu #}
         {% block body %}{% endblock %}
     </body>
 </html>

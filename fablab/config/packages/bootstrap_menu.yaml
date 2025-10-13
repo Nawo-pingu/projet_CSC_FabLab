@@ -4,7 +4,7 @@ bootstrap_menu:
       items:
         lieux:
           label: 'Lieux'
-          route: 'lieu_list'
+          route: 'app_lieu_index'
         matériels:
-          label: 'materiels'
-          route: 'materiel_list' 
+          label: 'Materiels'
+          route: 'app_materiel_index' 

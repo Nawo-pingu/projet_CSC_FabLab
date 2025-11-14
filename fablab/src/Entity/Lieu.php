@@ -23,6 +23,9 @@ class Lieu
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\OneToOne(mappedBy: 'inventaires', cascade: ['persist', 'remove'])]
+    private ?Member $member = null;
+
     public function __construct()
     {
         $this->materiels = new ArrayCollection();
@@ -71,6 +74,28 @@ class Lieu
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getMember(): ?Member
+    {
+        return $this->member;
+    }
+
+    public function setMember(?Member $member): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($member === null && $this->member !== null) {
+            $this->member->setInventaires(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($member !== null && $member->getInventaires() !== $this) {
+            $member->setInventaires($this);
+        }
+
+        $this->member = $member;
 
         return $this;
     }

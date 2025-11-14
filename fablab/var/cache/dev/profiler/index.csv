@@ -1,0 +1,7 @@
+128590,127.0.0.1,GET,http://localhost:8000/Lieu/2,1762782905,5b2a12,404,request
+5b2a12,127.0.0.1,GET,http://localhost:8000/Lieu/2,1762782905,,404,request
+5e7186,127.0.0.1,GET,http://localhost:8000/,1762782908,,200,request
+3f008e,127.0.0.1,GET,http://localhost:8000/lieu,1762782922,,200,request
+6a27f8,127.0.0.1,GET,http://localhost:8000/materiel,1762782923,,200,request
+a79750,127.0.0.1,GET,http://localhost:8000/lieu,1762782924,,200,request
+f1e205,127.0.0.1,GET,http://localhost:8000/,1762782937,,200,request

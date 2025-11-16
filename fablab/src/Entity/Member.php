@@ -40,6 +40,9 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'member', cascade: ['persist', 'remove'])]
     private ?Lieu $inventaires = null;
 
+    #[ORM\ManyToOne(inversedBy: 'createur')]
+    private ?Categorie $categorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -142,6 +145,18 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     public function setInventaires(?Lieu $inventaires): static
     {
         $this->inventaires = $inventaires;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

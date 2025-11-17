@@ -21,7 +21,7 @@ class Categorie
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?bool $publiée = null;
+    private ?bool $published = null;
 
     /**
      * @var Collection<int, Member>
@@ -58,14 +58,14 @@ class Categorie
         return $this;
     }
 
-    public function isPubliée(): ?bool
+    public function isPublished(): ?bool
     {
-        return $this->publiée;
+        return $this->published;
     }
 
-    public function setPubliée(bool $publiée): static
+    public function setPublished(bool $published): static
     {
-        $this->publiée = $publiée;
+        $this->published = $published;
 
         return $this;
     }

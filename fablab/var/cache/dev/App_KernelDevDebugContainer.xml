@@ -274,6 +274,14 @@
             <parameter key="roles" type="collection"/>
             <parameter key="items" type="collection"/>
           </parameter>
+          <parameter key="catégories" type="collection">
+            <parameter key="label">Categories</parameter>
+            <parameter key="route">app_categorie_index</parameter>
+            <parameter key="is_divider">false</parameter>
+            <parameter key="route_parameters" type="collection"/>
+            <parameter key="roles" type="collection"/>
+            <parameter key="items" type="collection"/>
+          </parameter>
         </parameter>
       </parameter>
     </parameter>

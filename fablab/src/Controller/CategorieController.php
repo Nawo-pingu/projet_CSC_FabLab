@@ -54,13 +54,21 @@ final class CategorieController extends AbstractController
     #[Route('/{categorie_id}/materiel/{materiel_id}',
         methods: ['GET'],
         name: 'app_categorie_materiel_show')]
+
     public function MaterielShow(
         #[MapEntity(id: 'categorie_id')]
         Categorie $categorie,
         #[MapEntity(id: 'materiel_id')]
         Materiel $materiel
     ): Response {
-        return $this->render('categorie/show.html.twig', [
+        if (!$categorie->getMateriels()->contains($materiel)) {
+            throw $this->createNotFoundException("Couldn't find such a materiel in this categorie!");
+        }
+
+        if ($categorie->isPublished() == false) {
+            throw $this->createAccessDeniedException("You cannot access the requested ressource!");
+        }
+        return $this->render('categorie/materiel_show.html.twig', [
             'materiel' => $materiel,
             'categorie' => $categorie,
         ]);

@@ -15,7 +15,7 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('publiée')
+            ->add('published')
             ->add('materiels', EntityType::class, [
                 'class' => Materiel::class,
                 'choice_label' => 'id',

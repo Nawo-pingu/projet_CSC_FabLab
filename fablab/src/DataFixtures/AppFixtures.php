@@ -21,15 +21,17 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        foreach ($this->getLieuData() as $lieuData) {
+        foreach ($this->getLieuData() as $i => $lieuData) {
             $lieu = new Lieu();
             $lieu->setName($lieuData["name"]);
-            foreach ($lieuData["matos"] as $objetData) {
+            foreach ($lieuData["matos"] as $j => $objetData) {
                 $objet = new Materiel();
                 $objet->setName($objetData["name"]);
                 $objet->setLieu($lieu);
                 $objet->setEmplacement($objetData["emplacement"]);
                 $manager->persist($objet);
+
+                $this->addReference("materiel_$i$j", $objet);
             }
             $manager->persist($lieu);
         }
@@ -46,18 +48,15 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
         }
+        $manager->flush();
 
         foreach ($this->getCategorieData() as $categorieData) {
             $categorie = new Categorie();
             $categorie->setDescription($categorieData['description']);
-            $categorie->setPubliée($categorieData['publiée']);
-            foreach ($categorieData['materiels'] as $materielId) {
-                $materiel = $manager->getRepository(Materiel::class)->find($materielId);
-                if ($materiel) {
-                    $categorie->addMateriel($materiel);
-                } else {
-                    throw new \Exception("Materiel with ID $materielId not found");
-                }
+            $categorie->setPublished($categorieData['published']);
+            foreach ($categorieData['materiels'] as $ref) {
+                $materiel = $this->getReference($ref, Materiel::class);
+                $categorie->addMateriel($materiel);
             }
             $manager->persist($categorie);
         }
@@ -105,14 +104,14 @@ class AppFixtures extends Fixture
         return [
             [
                 'description' => 'Outils de mesure',
-                'publiée' => true,
-                'materiels' => [1, 2]
+                'published' => true,
+                'materiels' => ['materiel_00', 'materiel_10']
 
             ],
             [
                 'description' => 'Outils de coupe',
-                'publiée' => false,
-                'materiels' => [2]
+                'published' => false,
+                'materiels' => ['materiel_01', 'materiel_11']
             ],
         ];
     }

@@ -52,10 +52,10 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
 
         $this->parent = $this->load("base.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
-        
+
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
-        
+
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
     }
@@ -74,10 +74,10 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
         yield "Categorie index";
-        
+
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        
+
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
@@ -112,7 +112,8 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
         ";
         // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 18, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () {
+            throw new RuntimeError('Variable "categories" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
             // line 19
@@ -127,49 +128,25 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
             yield "</td>
                 <td>";
             // line 22
-            yield (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "publiée", [], "any", false, false, false, 22)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("Yes") : ("No"));
+            yield (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "published", [], "any", false, false, false, 22)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("Yes") : ("No"));
             yield "</td>
-                ";
-            // line 23
-            $context['_parent'] = $context;
-            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "materiels", [], "any", false, false, false, 23));
-            foreach ($context['_seq'] as $context["_key"] => $context["materiel"]) {
-                // line 24
-                yield "                   <li>
-                        <a href=\"";
-                // line 25
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_materiel_show", ["categorie_id" => CoreExtension::getAttribute($this->env, $this->source,                 // line 27
-$context["categorie"], "id", [], "any", false, false, false, 27), "materiel_id" => CoreExtension::getAttribute($this->env, $this->source,                 // line 28
-$context["materiel"], "id", [], "any", false, false, false, 28)]), "html", null, true);
-                // line 30
-                yield "\">";
-                yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["materiel"], "html", null, true);
-                yield "</a>
-                    </li>
-
-                ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_key'], $context['materiel'], $context['_parent']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 34
-            yield "                <td>
+                <td>
                     <a href=\"";
-            // line 35
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 35)]), "html", null, true);
-            yield "\">back to categorie</a>
+            // line 24
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 24)]), "html", null, true);
+            yield "\">show</a>
                     <a href=\"";
-            // line 36
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 36)]), "html", null, true);
+            // line 25
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, $context["categorie"], "id", [], "any", false, false, false, 25)]), "html", null, true);
             yield "\">edit</a>
                 </td>
             </tr>
         ";
             $context['_iterated'] = true;
         }
-        // line 39
+        // line 28
         if (!$context['_iterated']) {
-            // line 40
+            // line 29
             yield "            <tr>
                 <td colspan=\"4\">no records found</td>
             </tr>
@@ -178,19 +155,19 @@ $context["materiel"], "id", [], "any", false, false, false, 28)]), "html", null,
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['categorie'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 44
+        // line 33
         yield "        </tbody>
     </table>
 
     <a href=\"";
-        // line 47
+        // line 36
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_new");
         yield "\">Create new</a>
 ";
-        
+
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        
+
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
@@ -217,7 +194,7 @@ $context["materiel"], "id", [], "any", false, false, false, 28)]), "html", null,
      */
     public function getDebugInfo(): array
     {
-        return array (  187 => 47,  182 => 44,  173 => 40,  171 => 39,  163 => 36,  159 => 35,  156 => 34,  145 => 30,  143 => 28,  142 => 27,  141 => 25,  138 => 24,  134 => 23,  130 => 22,  126 => 21,  122 => 20,  119 => 19,  114 => 18,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array(163 => 36, 158 => 33, 149 => 29, 147 => 28, 139 => 25, 135 => 24, 130 => 22, 126 => 21, 122 => 20, 119 => 19, 114 => 18, 100 => 6, 87 => 5, 64 => 3, 41 => 1, );
     }
 
     public function getSourceContext(): Source
@@ -243,20 +220,9 @@ $context["materiel"], "id", [], "any", false, false, false, 28)]), "html", null,
             <tr>
                 <td>{{ categorie.id }}</td>
                 <td>{{ categorie.description }}</td>
-                <td>{{ categorie.publiée ? 'Yes' : 'No' }}</td>
-                {% for materiel in categorie.materiels %}
-                   <li>
-                        <a href=\"{{ path( 'app_categorie_materiel_show',
-                                        {
-                                            'categorie_id': categorie.id,
-                                            'materiel_id' : materiel.id
-                                        }
-                                        ) }}\">{{ materiel }}</a>
-                    </li>
-
-                {% endfor %}
+                <td>{{ categorie.published ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href=\"{{ path('app_categorie_show', {'id': categorie.id}) }}\">back to categorie</a>
+                    <a href=\"{{ path('app_categorie_show', {'id': categorie.id}) }}\">show</a>
                     <a href=\"{{ path('app_categorie_edit', {'id': categorie.id}) }}\">edit</a>
                 </td>
             </tr>

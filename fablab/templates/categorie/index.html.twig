@@ -19,20 +19,9 @@
             <tr>
                 <td>{{ categorie.id }}</td>
                 <td>{{ categorie.description }}</td>
-                <td>{{ categorie.publiée ? 'Yes' : 'No' }}</td>
-                {% for materiel in categorie.materiels %}
-                   <li>
-                        <a href="{{ path( 'app_categorie_materiel_show',
-                                        {
-                                            'categorie_id': categorie.id,
-                                            'materiel_id' : materiel.id
-                                        }
-                                        ) }}">{{ materiel }}</a>
-                    </li>
-
-                {% endfor %}
+                <td>{{ categorie.published ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}">back to categorie</a>
+                    <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}">show</a>
                     <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">edit</a>
                 </td>
             </tr>

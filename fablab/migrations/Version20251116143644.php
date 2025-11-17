@@ -20,7 +20,7 @@ final class Version20251116143644 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE categorie (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, description VARCHAR(255) NOT NULL, publiée BOOLEAN NOT NULL)');
+        $this->addSql('CREATE TABLE categorie (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, description VARCHAR(255) NOT NULL, published BOOLEAN NOT NULL)');
         $this->addSql('CREATE TABLE categorie_materiel (categorie_id INTEGER NOT NULL, materiel_id INTEGER NOT NULL, PRIMARY KEY(categorie_id, materiel_id), CONSTRAINT FK_2055F1FBBCF5E72D FOREIGN KEY (categorie_id) REFERENCES categorie (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE, CONSTRAINT FK_2055F1FB16880AAF FOREIGN KEY (materiel_id) REFERENCES materiel (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE)');
         $this->addSql('CREATE INDEX IDX_2055F1FBBCF5E72D ON categorie_materiel (categorie_id)');
         $this->addSql('CREATE INDEX IDX_2055F1FB16880AAF ON categorie_materiel (materiel_id)');

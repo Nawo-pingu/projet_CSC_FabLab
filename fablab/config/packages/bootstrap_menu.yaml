@@ -3,8 +3,11 @@ bootstrap_menu:
     main:
       items:
         lieux:
-          label: 'Lieux'
-          route: 'app_lieu_index'
+          label: "Lieux"
+          route: "app_lieu_index"
         matériels:
-          label: 'Materiels'
-          route: 'app_materiel_index' 
+          label: "Materiels"
+          route: "app_materiel_index"
+        catégories:
+          label: "Categories"
+          route: "app_categorie_index"

@@ -35,12 +35,17 @@ class AppFixtures extends Fixture
             }
             $manager->persist($lieu);
         }
+        $manager->flush();
+
         foreach ($this->getMemberData() as $memberData) {
             $user = new Member();
-            $user->setNom($memberData['name']);
+            $user->setName($memberData['name']);
             $password = $this->hasher->hashPassword($user, $memberData['mdp']);
             $user->setEmail($memberData['email']);
             $user->setPassword($password);
+            $lieu = $manager->getRepository(Lieu::class)->findOneBy(['name' => $memberData['lieu']]);
+            $user->setLieux($lieu);
+            dump($lieu);
 
             // $roles = array();
             // $roles[] = $role;
@@ -70,12 +75,14 @@ class AppFixtures extends Fixture
             [
                 'name' => 'olivier',
                 'email' => 'olivier@localhost',
-                'mdp' => '123456'
+                'mdp' => '123456',
+                'lieu' => 'fablab'
             ],
             [
                 'name' => 'slash',
                 'email' => 'slash@localhost',
-                'mdp' => '123456'
+                'mdp' => '123456',
+                'lieu' => 'reserve u1'
             ]
         ];
     }

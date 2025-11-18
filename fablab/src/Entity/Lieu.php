@@ -23,7 +23,7 @@ class Lieu
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToOne(mappedBy: 'inventaires', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'lieux', cascade: ['persist', 'remove'])]
     private ?Member $member = null;
 
     public function __construct()
@@ -87,12 +87,12 @@ class Lieu
     {
         // unset the owning side of the relation if necessary
         if ($member === null && $this->member !== null) {
-            $this->member->setInventaires(null);
+            $this->member->setLieux(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($member !== null && $member->getInventaires() !== $this) {
-            $member->setInventaires($this);
+        if ($member !== null && $member->getLieux() !== $this) {
+            $member->setLieux($this);
         }
 
         $this->member = $member;

@@ -20,7 +20,7 @@ return [
         '/lieu/new' => [[['_route' => 'app_lieu_new', '_controller' => 'App\\Controller\\LieuController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/' => [[['_route' => 'app_main_page', '_controller' => 'App\\Controller\\MainPageController::index'], null, null, null, false, false, null]],
         '/materiel' => [[['_route' => 'app_materiel_index', '_controller' => 'App\\Controller\\MaterielController::index'], null, ['GET' => 0], null, false, false, null]],
-        '/materiel/new' => [[['_route' => 'app_materiel_new', '_controller' => 'App\\Controller\\MaterielController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/member' => [[['_route' => 'app_member_index', '_controller' => 'App\\Controller\\MemberController::index'], null, ['GET' => 0], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -55,10 +55,16 @@ return [
                     .'|/edit(*:313)'
                     .'|(*:321)'
                 .')'
-                .'|/materiel/([^/]++)(?'
-                    .'|(*:351)'
-                    .'|/edit(*:364)'
-                    .'|(*:372)'
+                .'|/m(?'
+                    .'|ateriel/(?'
+                        .'|materiel/new/([^/]++)(*:367)'
+                        .'|([^/]++)(?'
+                            .'|(*:386)'
+                            .'|/edit(*:399)'
+                            .'|(*:407)'
+                        .')'
+                    .')'
+                    .'|ember/([^/]++)(*:431)'
                 .')'
             .')/?$}sDu',
     ],
@@ -78,10 +84,12 @@ return [
         300 => [[['_route' => 'app_lieu_show', '_controller' => 'App\\Controller\\LieuController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         313 => [[['_route' => 'app_lieu_edit', '_controller' => 'App\\Controller\\LieuController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         321 => [[['_route' => 'app_lieu_delete', '_controller' => 'App\\Controller\\LieuController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        351 => [[['_route' => 'app_materiel_show', '_controller' => 'App\\Controller\\MaterielController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        364 => [[['_route' => 'app_materiel_edit', '_controller' => 'App\\Controller\\MaterielController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        372 => [
-            [['_route' => 'app_materiel_delete', '_controller' => 'App\\Controller\\MaterielController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        367 => [[['_route' => 'app_materiel_new', '_controller' => 'App\\Controller\\MaterielController::new'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        386 => [[['_route' => 'app_materiel_show', '_controller' => 'App\\Controller\\MaterielController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        399 => [[['_route' => 'app_materiel_edit', '_controller' => 'App\\Controller\\MaterielController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        407 => [[['_route' => 'app_materiel_delete', '_controller' => 'App\\Controller\\MaterielController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        431 => [
+            [['_route' => 'app_member_show', '_controller' => 'App\\Controller\\MemberController::show'], ['id'], ['GET' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

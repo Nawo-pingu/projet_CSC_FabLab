@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Member{% endblock %}
+
+{% block body %}
+    <h1>member</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ member.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ member.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('app_lieu_show', {'id' : member.lieux.id}) }}"> mon lieu </a>
+
+
+    <a href="{{ path('app_member_index') }}">back to list</a>
+
+    <a href="{{ path('app_lieu_show', {'id': member.lieux.id}) }}">back to Lieu</a>
+
+{% endblock %}

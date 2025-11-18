@@ -152,11 +152,6 @@ class __TwigTemplate_6855395d38e9f99774d09ada081cc987 extends Template
         // line 31
         yield "        </tbody>
     </table>
-
-    <a href=\"";
-        // line 34
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiel_new");
-        yield "\">Create new</a>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -188,7 +183,7 @@ class __TwigTemplate_6855395d38e9f99774d09ada081cc987 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  158 => 34,  153 => 31,  144 => 27,  142 => 26,  134 => 23,  130 => 22,  125 => 20,  121 => 19,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  153 => 31,  144 => 27,  142 => 26,  134 => 23,  130 => 22,  125 => 20,  121 => 19,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -225,8 +220,6 @@ class __TwigTemplate_6855395d38e9f99774d09ada081cc987 extends Template
         {% endfor %}
         </tbody>
     </table>
-
-    <a href=\"{{ path('app_materiel_new') }}\">Create new</a>
 {% endblock %}
 ", "materiel/index.html.twig", "/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/templates/materiel/index.html.twig");
     }

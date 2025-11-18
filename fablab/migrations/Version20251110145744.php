@@ -20,9 +20,9 @@ final class Version20251110145744 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE member (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, inventaires_id INTEGER DEFAULT NULL, email VARCHAR(180) NOT NULL, roles CLOB NOT NULL --(DC2Type:json)
-        , password VARCHAR(255) NOT NULL, nom VARCHAR(255) NOT NULL, description VARCHAR(255) DEFAULT NULL, CONSTRAINT FK_70E4FA787A6D8980 FOREIGN KEY (inventaires_id) REFERENCES lieu (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_70E4FA787A6D8980 ON member (inventaires_id)');
+        $this->addSql('CREATE TABLE member (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, lieux_id INTEGER DEFAULT NULL, email VARCHAR(180) NOT NULL, roles CLOB NOT NULL --(DC2Type:json)
+        , password VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) DEFAULT NULL, CONSTRAINT FK_70E4FA787A6D8980 FOREIGN KEY (lieux_id) REFERENCES lieu (id) NOT DEFERRABLE INITIALLY IMMEDIATE)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_70E4FA787A6D8980 ON member (lieux_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_IDENTIFIER_EMAIL ON member (email)');
     }
 

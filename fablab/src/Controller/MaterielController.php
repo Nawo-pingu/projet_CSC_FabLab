@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Materiel;
+use App\Entity\Lieu;
 use App\Form\MaterielType;
 use App\Repository\MaterielRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,10 +23,11 @@ final class MaterielController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_materiel_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/materiel/new/{id}', name: 'app_materiel_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager, Lieu $lieu): Response
     {
         $materiel = new Materiel();
+        $materiel->setLieu($lieu);
         $form = $this->createForm(MaterielType::class, $materiel);
         $form->handleRequest($request);
 
@@ -33,7 +35,11 @@ final class MaterielController extends AbstractController
             $entityManager->persist($materiel);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute(
+                'app_materiel_show',
+                ['id' => $lieu->getId()],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('materiel/new.html.twig', [
@@ -59,7 +65,7 @@ final class MaterielController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_materiel_show', ['id' => $materiel->getLieu()->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('materiel/edit.html.twig', [
@@ -71,11 +77,11 @@ final class MaterielController extends AbstractController
     #[Route('/{id}', name: 'app_materiel_delete', methods: ['POST'])]
     public function delete(Request $request, Materiel $materiel, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$materiel->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $materiel->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($materiel);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_materiel_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_lieu_show', ['id' => $materiel->getLieu()->getId()], Response::HTTP_SEE_OTHER);
     }
 }

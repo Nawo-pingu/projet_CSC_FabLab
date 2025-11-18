@@ -149,16 +149,29 @@ class __TwigTemplate_c45c68f8a31f7b6a13ede5bc14f29ed6 extends Template
 
     <a href=\"";
         // line 33
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_index");
-        yield "\">back to list</a>
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_materiel_new", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 33, $this->source); })()), "id", [], "any", false, false, false, 33)]), "html", null, true);
+        yield "\">Add new materiel</a>
 
     <a href=\"";
         // line 35
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_edit", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
         yield "\">edit</a>
 
-    ";
+    <a href=\"";
         // line 37
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_index");
+        yield "\">back to list of lieu</a>
+
+    
+
+    <a href=\"";
+        // line 41
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_member_show", ["id" => CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["lieu"]) || array_key_exists("lieu", $context) ? $context["lieu"] : (function () { throw new RuntimeError('Variable "lieu" does not exist.', 41, $this->source); })()), "member", [], "any", false, false, false, 41), "id", [], "any", false, false, false, 41)]), "html", null, true);
+        yield "\">back to member</a>
+
+
+    ";
+        // line 44
         yield Twig\Extension\CoreExtension::include($this->env, $context, "lieu/_delete_form.html.twig");
         yield "
 ";
@@ -192,7 +205,7 @@ class __TwigTemplate_c45c68f8a31f7b6a13ede5bc14f29ed6 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  162 => 37,  157 => 35,  152 => 33,  144 => 27,  142 => 26,  131 => 24,  128 => 23,  124 => 22,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  175 => 44,  169 => 41,  162 => 37,  157 => 35,  152 => 33,  144 => 27,  142 => 26,  131 => 24,  128 => 23,  124 => 22,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -229,9 +242,16 @@ class __TwigTemplate_c45c68f8a31f7b6a13ede5bc14f29ed6 extends Template
         </tbody>
     </table>
 
-    <a href=\"{{ path('app_lieu_index') }}\">back to list</a>
+    <a href=\"{{ path('app_materiel_new', {'id': lieu.id}) }}\">Add new materiel</a>
 
     <a href=\"{{ path('app_lieu_edit', {'id': lieu.id}) }}\">edit</a>
+
+    <a href=\"{{ path('app_lieu_index') }}\">back to list of lieu</a>
+
+    
+
+    <a href=\"{{ path('app_member_show', {'id': lieu.member.id}) }}\">back to member</a>
+
 
     {{ include('lieu/_delete_form.html.twig') }}
 {% endblock %}

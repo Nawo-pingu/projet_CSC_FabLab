@@ -32,13 +32,13 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
     #[ORM\OneToOne(inversedBy: 'member', cascade: ['persist', 'remove'])]
-    private ?Lieu $inventaires = null;
+    private ?Lieu $lieux = null;
 
     #[ORM\ManyToOne(inversedBy: 'createur')]
     private ?Categorie $categorie = null;
@@ -113,14 +113,14 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
         // @deprecated, to be removed when upgrading to Symfony 8
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom(string $nom): static
+    public function setName(string $nom): static
     {
-        $this->nom = $nom;
+        $this->name = $nom;
 
         return $this;
     }
@@ -137,14 +137,14 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getInventaires(): ?Lieu
+    public function getLieux(): ?Lieu
     {
-        return $this->inventaires;
+        return $this->lieux;
     }
 
-    public function setInventaires(?Lieu $inventaires): static
+    public function setLieux(?Lieu $inventaires): static
     {
-        $this->inventaires = $inventaires;
+        $this->lieux = $inventaires;
 
         return $this;
     }

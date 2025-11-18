@@ -52,10 +52,10 @@ class __TwigTemplate_3cc0643875c2520f1eec480945de7da2 extends Template
 
         $this->parent = $this->load("base.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
-        
+
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
-        
+
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
     }
@@ -74,10 +74,10 @@ class __TwigTemplate_3cc0643875c2520f1eec480945de7da2 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
         yield "Lieu index";
-        
+
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        
+
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
@@ -111,7 +111,8 @@ class __TwigTemplate_3cc0643875c2520f1eec480945de7da2 extends Template
         ";
         // line 17
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["lieus"]) || array_key_exists("lieus", $context) ? $context["lieus"] : (function () { throw new RuntimeError('Variable "lieus" does not exist.', 17, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["lieux"]) || array_key_exists("lieux", $context) ? $context["lieux"] : (function () {
+            throw new RuntimeError('Variable "lieux" does not exist.', 17, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["lieu"]) {
             // line 18
@@ -158,10 +159,10 @@ class __TwigTemplate_3cc0643875c2520f1eec480945de7da2 extends Template
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_lieu_new");
         yield "\">Create new</a>
 ";
-        
+
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-        
+
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
@@ -188,7 +189,7 @@ class __TwigTemplate_3cc0643875c2520f1eec480945de7da2 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  158 => 34,  153 => 31,  144 => 27,  142 => 26,  134 => 23,  130 => 22,  125 => 20,  121 => 19,  118 => 18,  113 => 17,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array(158 => 34, 153 => 31, 144 => 27, 142 => 26, 134 => 23, 130 => 22, 125 => 20, 121 => 19, 118 => 18, 113 => 17, 100 => 6, 87 => 5, 64 => 3, 41 => 1, );
     }
 
     public function getSourceContext(): Source
@@ -209,7 +210,7 @@ class __TwigTemplate_3cc0643875c2520f1eec480945de7da2 extends Template
             </tr>
         </thead>
         <tbody>
-        {% for lieu in lieus %}
+        {% for lieu in lieux %}
             <tr>
                 <td>{{ lieu.id }}</td>
                 <td>{{ lieu.name }}</td>

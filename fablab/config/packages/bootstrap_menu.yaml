@@ -11,3 +11,6 @@ bootstrap_menu:
         catégories:
           label: "Categories"
           route: "app_categorie_index"
+        membres:
+          label: "Members"
+          route: "app_member_index"

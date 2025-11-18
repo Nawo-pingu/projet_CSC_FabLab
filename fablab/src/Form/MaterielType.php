@@ -15,9 +15,8 @@ class MaterielType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('lieu', EntityType::class, [
-                'class' => Lieu::class,
-                'choice_label' => 'id',
+            ->add('lieu', null, [
+                'disabled' => true,
             ])
         ;
     }

@@ -17,6 +17,15 @@
             </tr>
         </tbody>
     </table>
+    {% if materiel.imageName %}
+        <div class="mb-3">
+            <img src="{{ vich_uploader_asset(materiel, 'imageFile') }}" 
+                 alt="Image de {{ materiel.name }}" 
+                 style="max-width: 300px; height: auto;">
+        </div>
+    {% else %}
+        <p>Pas d'image disponible pour ce materiel.</p>
+    {% endif %}
 
     <a href="{{ path('app_materiel_edit', {'id': materiel.id}) }}">edit</a>
 

@@ -55,4 +55,24 @@
         </tbody>
     </table>
 
+
+    <h4>Lieu</h4>
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <td>{{ member.lieux.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ member.lieux.name }}</td>
+            </tr>
+            <tr>
+                <th>Actions</th>
+                <td>
+                    <a href="{{ path('app_lieu_show', {'id': member.lieux.id}) }}">show</a>
+                    <a href="{{ path('app_lieu_edit', {'id': member.lieux.id}) }}">edit</a>
+                </td>
+            </tr>
+        </table>
+
 {% endblock %}

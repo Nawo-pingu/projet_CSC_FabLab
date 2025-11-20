@@ -2,13 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Lieu;
 use App\Entity\Materiel;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 class MaterielType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -17,6 +16,16 @@ class MaterielType extends AbstractType
             ->add('name')
             ->add('lieu', null, [
                 'disabled' => true,
+            ])
+            ->add('emplacement', TextType::class, [
+                'required' => true,
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image du matériel',
+                'required' => false,
+                'allow_delete' => true,
+                'download_uri' => true,
+                'image_uri' => true,
             ])
         ;
     }

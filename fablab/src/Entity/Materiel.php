@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use App\Repository\MaterielRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: MaterielRepository::class)]
+#[Vich\Uploadable]
 class Materiel
 {
     #[ORM\Id]
@@ -30,6 +34,16 @@ class Materiel
 
     #[ORM\Column(length: 255)]
     private ?string $emplacement = null;
+
+    #[Vich\UploadableField(mapping: 'materiels_images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageName = null;
+
+    #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
 
     public function __construct()
     {
@@ -102,5 +116,37 @@ class Materiel
         $this->emplacement = $emplacement;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName() ?? 'Materiel #' . $this->getId();
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): static
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // Obligatoire pour forcer la mise à jour de l'entité
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 }

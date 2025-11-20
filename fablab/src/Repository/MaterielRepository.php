@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Materiel;
+use App\Entity\Member;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,6 +15,21 @@ class MaterielRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Materiel::class);
+    }
+
+    /**
+     * @return Materiel[] Returns an array of Materiel objects for a member
+     */
+    public function findMemberMateriels(Member $member): array
+    {
+        return $this->createQueryBuilder('m')
+            ->leftJoin('m.lieu', 'l')
+            ->leftJoin('l.member', 'mem')
+            ->andWhere('mem = :member')
+            ->setParameter('member', $member)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     //    /**

@@ -17,8 +17,17 @@ final class LieuController extends AbstractController
     #[Route(name: 'app_lieu_index', methods: ['GET'])]
     public function index(LieuRepository $lieuRepository): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $lieux = $lieuRepository->findAll();
+        } else {
+            $member = $this->getUser();
+            // Member has one Lieu via Member::getLieux()
+            $lieu = $member->getLieux();
+            $lieux = $lieu ? [$lieu] : [];
+        }
+
         return $this->render('lieu/index.html.twig', [
-            'lieux' => $lieuRepository->findAll(),
+            'lieux' => $lieux,
         ]);
     }
 

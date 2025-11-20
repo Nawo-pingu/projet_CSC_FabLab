@@ -18,8 +18,15 @@ final class MaterielController extends AbstractController
     #[Route(name: 'app_materiel_index', methods: ['GET'])]
     public function index(MaterielRepository $materielRepository): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $materiels = $materielRepository->findAll();
+        } else {
+            $member = $this->getUser();
+            $materiels = $materielRepository->findMemberMateriels($member);
+        }
+
         return $this->render('materiel/index.html.twig', [
-            'materiels' => $materielRepository->findAll(),
+            'materiels' => $materiels,
         ]);
     }
 
@@ -28,6 +35,7 @@ final class MaterielController extends AbstractController
     {
         $materiel = new Materiel();
         $materiel->setLieu($lieu);
+        // $materiel->setEmplacement($lieu.);
         $form = $this->createForm(MaterielType::class, $materiel);
         $form->handleRequest($request);
 
@@ -35,8 +43,9 @@ final class MaterielController extends AbstractController
             $entityManager->persist($materiel);
             $entityManager->flush();
 
+            $this->addFlash('message', 'bien ajouté');
             return $this->redirectToRoute(
-                'app_materiel_show',
+                'app_lieu_show',
                 ['id' => $lieu->getId()],
                 Response::HTTP_SEE_OTHER
             );
@@ -65,7 +74,7 @@ final class MaterielController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_materiel_show', ['id' => $materiel->getLieu()->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_lieu_show', ['id' => $materiel->getLieu()->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('materiel/edit.html.twig', [

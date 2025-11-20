@@ -5,12 +5,29 @@ bootstrap_menu:
         lieux:
           label: "Lieux"
           route: "app_lieu_index"
+          roles: ["ROLE_USER"]
         matériels:
           label: "Materiels"
           route: "app_materiel_index"
+          roles: ["ROLE_USER"]
         catégories:
           label: "Categories"
           route: "app_categorie_index"
         membres:
           label: "Members"
           route: "app_member_index"
+
+    anonymousaccount:
+      items:
+        login:
+          label: "Login"
+          route: "app_login"
+    #        register:
+    #           label: 'Register'
+    #           route: 'app_register'
+    account:
+      items:
+        logout:
+          label: "Logout"
+          route: "app_logout"
+          roles: ["ROLE_USER"]

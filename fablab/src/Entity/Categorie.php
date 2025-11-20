@@ -26,8 +26,8 @@ class Categorie
     /**
      * @var Collection<int, Member>
      */
-    #[ORM\OneToMany(targetEntity: Member::class, mappedBy: 'categorie')]
-    private Collection $createur;
+    #[ORM\ManyToOne(inversedBy: 'categories')]
+    private ?Member $member = null;
 
     /**
      * @var Collection<int, Materiel>
@@ -37,7 +37,6 @@ class Categorie
 
     public function __construct()
     {
-        $this->createur = new ArrayCollection();
         $this->materiels = new ArrayCollection();
     }
 
@@ -70,35 +69,38 @@ class Categorie
         return $this;
     }
 
-    /**
-     * @return Collection<int, Member>
-     */
-    public function getCreateur(): Collection
+    public function getMember(): ?Member
     {
-        return $this->createur;
+        return $this->member;
     }
 
-    public function addCreateur(Member $createur): static
-    {
-        if (!$this->createur->contains($createur)) {
-            $this->createur->add($createur);
-            $createur->setCategorie($this);
-        }
+    // public function addMember(Member $member): static
+    // {
+    //     if (!$this->member->contains($member)) {
+    //         $this->member->add($member);
+    //         $member->setCategorie($this);
+    //     }
 
+    //     return $this;
+    // }
+
+    public function setMember(?Member $member): static
+    {
+        $this->member = $member;
         return $this;
     }
 
-    public function removeCreateur(Member $createur): static
-    {
-        if ($this->createur->removeElement($createur)) {
-            // set the owning side to null (unless already changed)
-            if ($createur->getCategorie() === $this) {
-                $createur->setCategorie(null);
-            }
-        }
+    // public function removeMember(Member $member): static
+    // {
+    //     if ($this->member->removeElement($member)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($member->getCategorie() === $this) {
+    //             $member->setCategorie(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Materiel>

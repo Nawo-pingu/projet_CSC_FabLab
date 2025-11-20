@@ -50,7 +50,7 @@ symfony console dbal:run "select * from materiel"
 # relations de Categorie :
 
 ```
-createur : OneToMany (connecté à membre)
+member : OneToMany (connecté à membre)
 
 materiels : ManyToMany (connecté à Materiel)
 ```
@@ -66,7 +66,7 @@ private ?int $id = null;
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToOne(mappedBy: 'inventaires', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'lieux', cascade: ['persist', 'remove'])]
     private ?Member $member = null;
 ```
 
@@ -82,8 +82,10 @@ private ?int $id = null;
     private ?string $description = null;
 
     #[ORM\OneToOne(inversedBy: 'member', cascade: ['persist', 'remove'])]
-    private ?Lieu $inventaires = null;
+    private ?Lieu $lieux = null;
 
-    #[ORM\ManyToOne(inversedBy: 'createur')]
-    private ?Categorie $categorie = null;
+    #[ORM\OneToMany(mappedBy: 'member', targetEntity: Categorie::class)]
+    private Collection $categories = null;
+
+
 ```

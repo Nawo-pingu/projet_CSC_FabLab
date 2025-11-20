@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\MemberRepository;
+
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -40,8 +42,13 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'member', cascade: ['persist', 'remove'])]
     private ?Lieu $lieux = null;
 
-    #[ORM\ManyToOne(inversedBy: 'createur')]
-    private ?Categorie $categorie = null;
+    #[ORM\OneToMany(mappedBy: 'member', targetEntity: Categorie::class)]
+    private Collection $categories;
+
+    public function __toString(): string
+    {
+        return $this->getName() ?? 'Membre #' . $this->getId();
+    }
 
     public function getId(): ?int
     {
@@ -149,15 +156,41 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCategorie(): ?Categorie
+
+
+    /**
+     * @return Collection<int, Categorie>
+     */
+    public function getCategories(): Collection
     {
-        return $this->categorie;
+        return $this->categories;
     }
 
-    public function setCategorie(?Categorie $categorie): static
+    public function addCategorie(Categorie $categorie): static
     {
-        $this->categorie = $categorie;
+        if (!$this->categories->contains($categorie)) {
+            $this->categories->add($categorie);
+        }
 
         return $this;
     }
+
+    public function removeCategorie(Categorie $categorie): static
+    {
+        $this->categories->removeElement($categorie);
+
+        return $this;
+    }
+
+    // public function getCategorie(): ?Categorie
+    // {
+    //     return $this->categorie;
+    // }
+
+    // public function setCategorie(?Categorie $categorie): static
+    // {
+    //     $this->categories = $categorie;
+
+    //     return $this;
+    // }
 }

@@ -52,10 +52,10 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
 
         $this->parent = $this->load("base.html.twig", 1);
         yield from $this->parent->unwrap()->yield($context, array_merge($this->blocks, $blocks));
-
+        
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
-
+        
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
     }
@@ -74,10 +74,10 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
         yield "Categorie index";
-
+        
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-
+        
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
@@ -112,8 +112,7 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
         ";
         // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () {
-            throw new RuntimeError('Variable "categories" does not exist.', 18, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new RuntimeError('Variable "categories" does not exist.', 18, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
             // line 19
@@ -158,16 +157,11 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
         // line 33
         yield "        </tbody>
     </table>
-
-    <a href=\"";
-        // line 36
-        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_new");
-        yield "\">Create new</a>
 ";
-
+        
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
-
+        
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         yield from [];
@@ -194,7 +188,7 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array(163 => 36, 158 => 33, 149 => 29, 147 => 28, 139 => 25, 135 => 24, 130 => 22, 126 => 21, 122 => 20, 119 => 19, 114 => 18, 100 => 6, 87 => 5, 64 => 3, 41 => 1, );
+        return array (  158 => 33,  149 => 29,  147 => 28,  139 => 25,  135 => 24,  130 => 22,  126 => 21,  122 => 20,  119 => 19,  114 => 18,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -233,8 +227,6 @@ class __TwigTemplate_6ab550cfe3ce1ce786f8efaa6b186b59 extends Template
         {% endfor %}
         </tbody>
     </table>
-
-    <a href=\"{{ path('app_categorie_new') }}\">Create new</a>
 {% endblock %}
 ", "categorie/index.html.twig", "/home/kiwano/Documents/TSP/CSC4101/projet_CSC_FabLab/fablab/templates/categorie/index.html.twig");
     }

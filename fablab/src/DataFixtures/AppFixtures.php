@@ -59,6 +59,8 @@ class AppFixtures extends Fixture
             $categorie = new Categorie();
             $categorie->setDescription($categorieData['description']);
             $categorie->setPublished($categorieData['published']);
+            $member = $manager->getRepository(Member::class)->findOneBy(['name' => $categorieData['member']]);
+            $categorie->setMember($member);
             foreach ($categorieData['materiels'] as $ref) {
                 $materiel = $this->getReference($ref, Materiel::class);
                 $categorie->addMateriel($materiel);
@@ -112,13 +114,15 @@ class AppFixtures extends Fixture
             [
                 'description' => 'Outils de mesure',
                 'published' => true,
-                'materiels' => ['materiel_00', 'materiel_10']
+                'materiels' => ['materiel_00', 'materiel_10'],
+                'member' => 'olivier'
 
             ],
             [
                 'description' => 'Outils de coupe',
                 'published' => false,
-                'materiels' => ['materiel_01', 'materiel_11']
+                'materiels' => ['materiel_01', 'materiel_11'],
+                'member' => 'slash'
             ],
         ];
     }

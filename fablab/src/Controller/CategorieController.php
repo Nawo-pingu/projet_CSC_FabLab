@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Entity\Materiel;
+use App\Entity\Member;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use App\Entity\Categorie;
 use App\Form\CategorieType;
@@ -19,14 +20,15 @@ final class CategorieController extends AbstractController
     public function index(CategorieRepository $categorieRepository): Response
     {
         return $this->render('categorie/index.html.twig', [
-            'categories' => $categorieRepository->findAll(),
+            'categories' => $categorieRepository->findBy(['published' => true]),
         ]);
     }
 
-    #[Route('/new', name: 'app_categorie_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/new/{id}', name: 'app_categorie_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager, Member $member): Response
     {
         $categorie = new Categorie();
+        $categorie->setMember($member);
         $form = $this->createForm(CategorieType::class, $categorie);
         $form->handleRequest($request);
 
@@ -34,7 +36,11 @@ final class CategorieController extends AbstractController
             $entityManager->persist($categorie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_categorie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute(
+                'app_member_show',
+                ['id' => $member->getId()],
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('categorie/new.html.twig', [
@@ -84,7 +90,7 @@ final class CategorieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_categorie_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_member_show', ['id' => $categorie->getMember()->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('categorie/edit.html.twig', [
@@ -101,6 +107,6 @@ final class CategorieController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_categorie_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_member_show', ['id' => $categorie->getMember()->getId()], Response::HTTP_SEE_OTHER);
     }
 }

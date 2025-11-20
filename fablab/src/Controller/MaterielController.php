@@ -23,7 +23,7 @@ final class MaterielController extends AbstractController
         ]);
     }
 
-    #[Route('/materiel/new/{id}', name: 'app_materiel_new', methods: ['GET', 'POST'])]
+    #[Route('/new/{id}', name: 'app_materiel_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, Lieu $lieu): Response
     {
         $materiel = new Materiel();

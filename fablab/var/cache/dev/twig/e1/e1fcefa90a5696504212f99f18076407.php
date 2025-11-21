@@ -191,11 +191,12 @@ class __TwigTemplate_ed74919b6cd1ada90048244201b2385b extends Template
         unset($context['_seq'], $context['_key'], $context['categorie'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 54
-        yield "        <a href=\"";
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_new", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["member"]) || array_key_exists("member", $context) ? $context["member"] : (function () { throw new RuntimeError('Variable "member" does not exist.', 54, $this->source); })()), "id", [], "any", false, false, false, 54)]), "html", null, true);
-        yield "\">Add new categorie</a>
-        </tbody>
+        yield "        </tbody>
     </table>
+    <a href=\"";
+        // line 56
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_categorie_new", ["id" => CoreExtension::getAttribute($this->env, $this->source, (isset($context["member"]) || array_key_exists("member", $context) ? $context["member"] : (function () { throw new RuntimeError('Variable "member" does not exist.', 56, $this->source); })()), "id", [], "any", false, false, false, 56)]), "html", null, true);
+        yield "\">Add new categorie</a>
 
 
     <h4>Lieu</h4>
@@ -260,7 +261,7 @@ class __TwigTemplate_ed74919b6cd1ada90048244201b2385b extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  226 => 73,  222 => 72,  214 => 67,  207 => 63,  194 => 54,  185 => 50,  183 => 49,  175 => 46,  171 => 45,  166 => 43,  162 => 42,  158 => 41,  155 => 40,  150 => 39,  133 => 25,  128 => 23,  122 => 20,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
+        return array (  227 => 73,  223 => 72,  215 => 67,  208 => 63,  198 => 56,  194 => 54,  185 => 50,  183 => 49,  175 => 46,  171 => 45,  166 => 43,  162 => 42,  158 => 41,  155 => 40,  150 => 39,  133 => 25,  128 => 23,  122 => 20,  115 => 16,  108 => 12,  100 => 6,  87 => 5,  64 => 3,  41 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -318,9 +319,9 @@ class __TwigTemplate_ed74919b6cd1ada90048244201b2385b extends Template
                 <td colspan=\"4\">no records found</td>
             </tr>
         {% endfor %}
-        <a href=\"{{ path('app_categorie_new', {'id': member.id})  }}\">Add new categorie</a>
         </tbody>
     </table>
+    <a href=\"{{ path('app_categorie_new', {'id': member.id})  }}\">Add new categorie</a>
 
 
     <h4>Lieu</h4>

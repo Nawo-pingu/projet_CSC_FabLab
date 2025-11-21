@@ -9,6 +9,11 @@
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
                 <!-- Core theme CSS (includes Bootstrap)-->
                 <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    {# Neutral custom styles & Google Font #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         {% endblock %}
 
         {% block javascripts %}
@@ -23,7 +28,7 @@
         <!-- Navigation -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container px-4 px-lg-5">
-                    <a class="navbar-brand" href="{{ path('app_main_page') }}">ACCUEIL</a>
+          <a class="navbar-brand" href="{{ path('app_main_page') }}">FabLab Inventory</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">

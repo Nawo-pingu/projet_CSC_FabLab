@@ -1,0 +1,47 @@
+/* Neutral theme tweaks */
+:root{
+  --brand-color: #2b2f33;
+  --muted: #6c757d;
+  --accent: #0d6efd; /* bootstrap primary */
+  --bg: #ffffff;
+}
+body{
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: var(--brand-color);
+  background-color: var(--bg);
+}
+.navbar-brand{
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+/* cards and lists */
+.card{
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+}
+.card .card-body{
+  padding: 1rem;
+}
+.list-group-item{
+  border: none;
+  padding-left: 0;
+}
+.btn-primary{
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+.alert{
+  border-radius: 6px;
+}
+/* tables */
+.table th,
+.table td{
+  vertical-align: middle;
+}
+/* small helpers */
+.text-muted{ color: var(--muted) !important; }
+
+/* Responsive tweaks */
+@media (max-width: 576px){
+  .navbar-brand{ font-size: 1rem; }
+}
